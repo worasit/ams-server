@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.worasit.ams.server.model.Greeting;
+import org.worasit.ams.server.service.GreetingService;
 
 @RestController
 public class GreetingController {
 
   public static final String TAG = "Greeting";
-  String template = "Hello, %s!";
   AtomicLong counter = new AtomicLong();
+  private final GreetingService greetingService;
+
+  public GreetingController(GreetingService greetingService) {
+    this.greetingService = greetingService;
+  }
 
   @Operation(summary = "Say greeting to a guest", tags = TAG)
   @ApiResponses(
@@ -31,11 +36,7 @@ public class GreetingController {
             })
       })
   @GetMapping(path = "/greeting")
-  public Greeting greeting(
-      @RequestParam(defaultValue = "World", name = "Guest's name") String guestName) {
-    return Greeting.builder()
-        .id(counter.incrementAndGet())
-        .content(String.format(template, guestName))
-        .build();
+  public Greeting greeting(@RequestParam(defaultValue = "World") String guestName) {
+    return greetingService.sayGreeting(counter.incrementAndGet(), guestName);
   }
 }
