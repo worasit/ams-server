@@ -2,10 +2,10 @@ GET http://localhost:8080/actuator
 Accept: application/json
 
 ###
-GET http://localhost:8080/greeting?name=worasit
+GET http://localhost:8080/greeting?guestName=worasit
 Accept: application/json
 
-###
+###3
 GET http://localhost:8080/swagger
 Accept: application/json
 
