@@ -1,3 +1,7 @@
+GET http://localhost:8080/actuator
+Accept: application/json
+
+###
 GET http://localhost:8080/greeting?name=worasit
 Accept: application/json
 

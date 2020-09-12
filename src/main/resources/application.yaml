@@ -4,3 +4,9 @@ springdoc:
   swagger-ui:
     path: "/swagger"
     operations-sorter: "method"
+#  show-actuator: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

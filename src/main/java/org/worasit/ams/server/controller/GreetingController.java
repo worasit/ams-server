@@ -13,10 +13,12 @@ import org.worasit.ams.server.model.Greeting;
 
 @RestController
 public class GreetingController {
+
+  public static final String TAG = "Greeting";
   String template = "Hello, %s!";
   AtomicLong counter = new AtomicLong();
 
-  @Operation(summary = "Say greeting to a guest")
+  @Operation(summary = "Say greeting to a guest", tags = TAG)
   @ApiResponses(
       value = {
         @ApiResponse(
