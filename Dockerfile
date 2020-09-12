@@ -1,6 +1,5 @@
 FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} /opt/ams-server/app.jar
+WORKDIR /app
+COPY target/*.jar /app/ams-server.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/opt/ams-server/app.jar"]
+ENTRYPOINT ["java","-jar","/app/ams-server.jar"]
