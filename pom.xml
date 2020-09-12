@@ -44,7 +44,13 @@
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
-      <version>42.2.14</version>
+      <version>${postgresql.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+      <version>1.4.6</version>
     </dependency>
 
     <dependency>
@@ -90,6 +96,7 @@
   <properties>
     <java.version>1.8</java.version>
     <flyway.version>5.2.4</flyway.version>
+    <postgresql.version>42.2.14</postgresql.version>
   </properties>
 
   <version>0.0.1-SNAPSHOT</version>

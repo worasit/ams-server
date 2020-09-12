@@ -1,1 +1,10 @@
-GET http://localhost:8080/greeting
+GET http://localhost:8080/greeting?name=worasit
+Accept: application/json
+
+###
+GET http://localhost:8080/swagger
+Accept: application/json
+
+###
+GET http://localhost:8080/api-docs
+Accept: application/json
