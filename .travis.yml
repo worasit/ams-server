@@ -1,19 +1,26 @@
-sudo: required
-
 language: java
+
 jdk:
   - openjdk8
+
+env:
+  global:
+    - secure: iAswVB2LOLCn5qHbwhML0dOSlX7z17dg0Q7NB0+ivNNCOUqsgh8BJvZGrF7y7pVT86A0MkgZxY4zrlt9n5JoqNqY3QZE1Bqyz+iAVxsDQoR1ALFKZJLl0aP78hO9JWk+naLsBflvMpz1ECt78kJ/LPamQAVqBgkAZrE/r9rI5NgqpEry71a5OSDG0Qy2wp05OsXHf5yjNYnX+IBD+ndjK1/ib3oJBg4+v/A9WDpD5wSVueIchPRMeVKw4UlxgL5Hxd+UfsJ/ETVSIsvhisntjrEeHamH5IsmdbvUQa3gx7pBwHVSDYxvwkj/nfBWs6witYbGNfBiIRlXSXxXXGOJIC1NEkLENtUmCMVbBtieHD6q6eys+ygIbCVJutugOPvrXJsk1TLOqm4bzdvUOkgpR/NcWEXRMUYC+XL590ULEU0hEXuBdeJecx/3KOp/4sznP5DoLlY+WDT6ne7bBbCnjhVeF2iSEoMxmJHgzk+oMxjP/290peVqrCyMVjAkCfWuiuJa8tyAjPBnVRFSxGns61rQS0+NfrtvWtbiEToswINRe278g1wKm7WrVp/zIK6Z49jJyAwRZnTPfWCRA5zVUEzxOA8Av/ERrOrPuV5HOVD3HErzh/0SCvJTLUhe+hczm5NHGnbenje7UaQlemUs8VQP6V3/0s79RXgY1S0OtNI=
+    - secure: RA4e3Ojiu59cn2pIUXczx1o1Hj2xH4U5P6Kv6W1RTgsRcGEm15UG1EXVTxmTkhZjykLsxjcoRiWnEr8PaGFsRegQJ+u5OJkfyRghnUgAF6a91IWM7j/MNI/ccfvS8fjvAruaDLikekFLd/6YBSExHb7lT+YhmOeWjTifYxC+3HLDOV7kgS0eJO4d4K8sRRPwM56kuHFmPMZW4Ysuj4+Zivd17F47ayyz1PL9ehVkhEdJ9NBbKzDw/GqzIZYqpTS3yyv4Ob1IH8yX7reEEFPRSw9+bE9yCXGFqhUHX7yfyRyTEhIocsPPZHVDTzwaJFRYl/a5GC1eCmzzvfn55yf777MSt2VDvnzYyZ/Ph/FPNrgNu8R6swS4/Fhkr9937OddczICmnrXxzb+09lXVsOfMQ4SBuqRyAXXrSf7bxL1ft0st+AtqBEkpmXHI2wMDSR2NzoNrvaRlNn2yd1XQFUQm3ETL51pA8XQKpedXhvEhmafGAZ9USHVpNLo1nUtldhDX/anpz6iWRXwEfPDa4g0AH4SFtr0GsufJ/wJ6W6ntoBgYG+TyQJBlk0gHHloifYHoM1VcoP7WrZVOO1higUVfnbwSFgDWLf066O9xs1FQEiO87eChglSUPPHdHpDOOjeHi5aC5rdwdHZZCH5XPz8m3RfFX/ywi8QnObjswqxNrU=
 
 services:
   - docker
 
 cache:
   directories:
-    - $HOME/.m2
+    - "$HOME/.m2"
 
 script:
   - mvn clean install
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - docker --version
+
+deploy:
+  provider: script
+  script: bash ./scripts/docker/push-image.sh
