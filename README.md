@@ -8,3 +8,4 @@ The prototype of apartment management system
 - Actuator: https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html
 - Testing: https://spring.io/guides/gs/testing-web/
 - CodeCov : https://github.com/codecov/example-java
+- Dockerizing: https://spring.io/guides/topicals/spring-boot-docker

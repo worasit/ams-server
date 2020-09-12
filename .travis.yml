@@ -1,6 +1,11 @@
+sudo: required
+
 language: java
 jdk:
   - openjdk8
+
+services:
+  - docker
 
 cache:
   directories:
@@ -11,3 +16,4 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - docker --version
