@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/worasit/ams-server.svg?branch=master)](https://travis-ci.org/worasit/ams-server) [![codecov](https://codecov.io/gh/worasit/ams-server/branch/master/graph/badge.svg)](https://codecov.io/gh/worasit/ams-server)
 # AMS
 The prototype of apartment management system
 
