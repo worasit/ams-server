@@ -9,6 +9,21 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <groupId>org.springframework.boot</groupId>
       </plugin>
+      <plugin>
+        <groupId>org.flywaydb</groupId>
+        <artifactId>flyway-maven-plugin</artifactId>
+        <version>5.2.4</version>
+        <configuration>
+          <baselineOnMigrate>false</baselineOnMigrate>
+          <user>postgres</user>
+          <password>admin</password>
+          <url>jdbc:postgresql://localhost:5432/ams</url>
+          <driver>org.postgresql.Driver</driver>
+          <schemas>public</schemas>
+          <sqlMigrationPrefix>V</sqlMigrationPrefix>
+          <repeatableSqlMigrationPrefix>R</repeatableSqlMigrationPrefix>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -19,6 +34,23 @@
     <dependency>
       <artifactId>spring-boot-starter-web</artifactId>
       <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-core</artifactId>
+      <version>${flyway.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>${postgresql.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+      <version>1.4.6</version>
     </dependency>
 
     <dependency>
@@ -58,11 +90,13 @@
     <artifactId>spring-boot-starter-parent</artifactId>
     <groupId>org.springframework.boot</groupId>
     <relativePath/>
-    <version>2.3.3.RELEASE</version> <!-- lookup parent from repository -->
+    <version>2.1.6.RELEASE</version> <!-- lookup parent from repository -->
   </parent>
 
   <properties>
     <java.version>1.8</java.version>
+    <flyway.version>5.2.4</flyway.version>
+    <postgresql.version>42.2.14</postgresql.version>
   </properties>
 
   <version>0.0.1-SNAPSHOT</version>
