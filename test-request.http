@@ -1,14 +1,30 @@
-GET http://localhost:8080/actuator
+GET http://{{host}}:{{port}}/actuator
 Accept: application/json
 
-###
-GET http://localhost:8080/greeting?guestName=worasit
-Accept: application/json
+> {% client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+}); %}
 
 ###
-GET http://localhost:8080/swagger
+GET http://{{host}}:{{port}}/greeting?guestName=worasit
 Accept: application/json
 
+> {% client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+}); %}
+
 ###
-GET http://localhost:8080/api-docs
+GET http://{{host}}:{{port}}/swagger
 Accept: application/json
+
+> {% client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+}); %}
+
+###
+GET http://{{host}}:{{port}}/api-docs
+Accept: application/json
+
+> {% client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+}); %}
