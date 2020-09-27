@@ -1,6 +1,7 @@
 package org.worasit.ams.server.mapper;
 
 import java.util.List;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
@@ -25,4 +26,9 @@ public interface RoleMapper {
   @ResultMap("roleResultMap")
   @Select("select * from roles where role_id = #{roleId}")
   Role getRoleById(Integer roleId);
+
+  @Insert(
+      "insert into roles (code, name, description, updated_at, created_at) "
+          + "values (#{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},#{updatedAt,jdbcType=TIMESTAMP}, #{createdAt,jdbcType=TIMESTAMP})")
+  Integer insertRole(Role role);
 }
