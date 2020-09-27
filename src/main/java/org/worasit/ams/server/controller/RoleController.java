@@ -1,10 +1,12 @@
 package org.worasit.ams.server.controller;
 
 import java.util.List;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.worasit.ams.server.domain.Role;
 import org.worasit.ams.server.mapper.RoleMapper;
@@ -29,7 +31,8 @@ public class RoleController {
   }
 
   @PostMapping(value = "/roles")
-  public Integer createNewRole(@RequestBody Role role) {
+  @ResponseStatus(value = HttpStatus.CREATED)
+  public Role createNewRole(@RequestBody Role role) {
     return roleMapper.insertRole(role);
   }
 }
