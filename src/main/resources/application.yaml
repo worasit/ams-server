@@ -4,7 +4,7 @@ springdoc:
   swagger-ui:
     path: "/swagger"
     operations-sorter: "method"
-#  show-actuator: true
+  show-actuator: true
 management:
   endpoints:
     web:
@@ -12,3 +12,17 @@ management:
         include: "*"
 server:
   port: 3000
+
+spring:
+  datasource:
+    name: "HikariDataSource"
+    username: "postgres"
+    password: "admin"
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: "jdbc:postgresql://localhost:5432/ams"
+    hikari:
+      auto-commit: true
+      connection-timeout: 300
+      maximum-pool-size: 20
+
