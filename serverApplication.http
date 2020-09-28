@@ -1,3 +1,10 @@
+DELETE http://{{host}}:{{port}}/roles?code=TET
+Accept: application/json
+
+###
+DELETE http://{{host}}:{{port}}/roles/6
+
+###
 POST http://{{host}}:{{port}}/roles
 Content-Type: application/json
 

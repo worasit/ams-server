@@ -1,6 +1,7 @@
 package org.worasit.ams.server.mapper;
 
 import java.util.List;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
@@ -32,4 +33,12 @@ public interface RoleMapper {
               + "values (#{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},#{updatedAt,jdbcType=TIMESTAMP}, #{createdAt,jdbcType=TIMESTAMP}) RETURNING *")
   @ResultMap("roleResultMap")
   Role insertRole(Role role);
+
+  @Delete("delete from roles where role_id = #{roleId}")
+  @ResultMap("roleResultMap")
+  Integer deleteRoleById(Integer roleId);
+
+  @Select("delete from roles where code = #{code} " + "RETURNING *")
+  @ResultMap("roleResultMap")
+  List<Role> deleteRoleByCode(String code);
 }
