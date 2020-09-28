@@ -17,6 +17,7 @@ public interface RoleMapper {
       id = "roleResultMap",
       value = {
         @Result(property = "roleId", column = "role_id", jdbcType = JdbcType.INTEGER, id = true),
+        @Result(property = "isActive", column = "is_active", jdbcType = JdbcType.BOOLEAN),
         @Result(property = "createdAt", column = "created_at", jdbcType = JdbcType.DATETIMEOFFSET),
         @Result(property = "updatedAt", column = "updated_at", jdbcType = JdbcType.DATETIMEOFFSET)
       })

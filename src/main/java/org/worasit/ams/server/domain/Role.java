@@ -19,6 +19,8 @@ public class Role implements Serializable {
 
   private String description;
 
+  private Boolean isActive;
+
   private Date updatedAt;
 
   private Date createdAt;

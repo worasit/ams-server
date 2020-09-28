@@ -1,4 +1,4 @@
-PUT http://{{host}}:{{port}}/roles/96
+PUT http://{{host}}:{{port}}/roles/6
 Content-Type: application/json
 
 {
