@@ -10,4 +10,4 @@ VALUES ('owner', 'OWN', 'The owner of the apartment', true),
         true),
        ('technician', 'TCH', 'a person who maintain electricity or water system of the property.',
         true),
-       ('guest', 'GST', '', true)
+       ('guest', 'GST', '', true);
