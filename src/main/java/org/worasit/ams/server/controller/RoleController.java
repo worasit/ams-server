@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -36,6 +37,12 @@ public class RoleController {
   @ResponseStatus(value = HttpStatus.CREATED)
   public Role createNewRole(@RequestBody Role role) {
     return roleMapper.insertRole(role);
+  }
+
+  @PutMapping("/roles/{id}")
+  public Role updateRoleById(@PathVariable("id") Integer id, @RequestBody Role role) {
+    role.setRoleId(id);
+    return roleMapper.updateRole(role);
   }
 
   @DeleteMapping("/roles/{id}")

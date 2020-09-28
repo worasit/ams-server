@@ -30,9 +30,21 @@ public interface RoleMapper {
   @Select(
       value =
           "insert into roles (code, name, description, updated_at, created_at) "
-              + "values (#{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},#{updatedAt,jdbcType=TIMESTAMP}, #{createdAt,jdbcType=TIMESTAMP}) RETURNING *")
+              + "values (#{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, current_timestamp, current_timestamp) RETURNING *")
   @ResultMap("roleResultMap")
   Role insertRole(Role role);
+
+  @Select({
+    "update roles",
+    "set code = #{code,jdbcType=VARCHAR},",
+    "name = #{name,jdbcType=VARCHAR},",
+    "description = #{description,jdbcType=VARCHAR},",
+    "updated_at = current_timestamp",
+    "where role_id = #{roleId,jdbcType=INTEGER}",
+    "RETURNING *;"
+  })
+  @ResultMap("roleResultMap")
+  Role updateRole(Role role);
 
   @Delete("delete from roles where role_id = #{roleId}")
   @ResultMap("roleResultMap")

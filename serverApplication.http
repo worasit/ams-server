@@ -1,3 +1,13 @@
+PUT http://{{host}}:{{port}}/roles/96
+Content-Type: application/json
+
+{
+  "code": "T96",
+  "name": "This is a test role",
+  "description": "Change Description"
+}
+
+###
 DELETE http://{{host}}:{{port}}/roles?code=TET
 Accept: application/json
 
@@ -9,11 +19,9 @@ POST http://{{host}}:{{port}}/roles
 Content-Type: application/json
 
 {
-  "code": "TET",
+  "code": "XXX",
   "name": "guest",
-  "description": "",
-  "updatedAt": null,
-  "createdAt": "2020-09-27T15:56:29.682+0000"
+  "description": "XXX Test insertion"
 }
 
 ###
