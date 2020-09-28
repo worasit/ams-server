@@ -17,7 +17,6 @@ public class MapperFactory {
     this.dataSource = dataSource;
   }
 
-  @Bean
   public SqlSessionFactory sqlSessionFactory() throws Exception {
     SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
     factoryBean.setDataSource(dataSource);
@@ -25,8 +24,15 @@ public class MapperFactory {
   }
 
   @Bean
-  public MapperFactoryBean<RoleMapper> userMapper() throws Exception {
+  public MapperFactoryBean<RoleMapper> roleMapper() throws Exception {
     MapperFactoryBean<RoleMapper> factoryBean = new MapperFactoryBean<>(RoleMapper.class);
+    factoryBean.setSqlSessionFactory(sqlSessionFactory());
+    return factoryBean;
+  }
+
+  @Bean
+  public MapperFactoryBean<UserMapper> userMapper() throws Exception {
+    MapperFactoryBean<UserMapper> factoryBean = new MapperFactoryBean<>(UserMapper.class);
     factoryBean.setSqlSessionFactory(sqlSessionFactory());
     return factoryBean;
   }
